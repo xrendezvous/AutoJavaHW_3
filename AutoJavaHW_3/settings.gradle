@@ -1,0 +1,5 @@
+rootProject.name = 'AutoJavaHW_3'
+include 'module-1'
+include 'module-2'
+include 'library-module'
+

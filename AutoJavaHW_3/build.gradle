@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.gradle'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+task checkReadmeFile {
+    doLast {
+        File readmeFile = file("$projectDir/README.md")
+        if (readmeFile.exists()) {
+            println "README.md file exists."
+        } else {
+            println "README.md file does not exist."
+        }
+    }
+}
+
+task buildAll {
+    dependsOn ':module-1:jar', ':module-2:jar', ':library-module:jar'
+
+    doLast {
+        println "All modules have been built successfully."
+    }
+}
